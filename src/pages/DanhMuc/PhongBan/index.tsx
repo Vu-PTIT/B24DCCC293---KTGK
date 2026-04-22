@@ -1,5 +1,6 @@
 import TableBase from '@/components/Table';
 import { type IColumn } from '@/components/Table/typing';
+import { enumToFilterData, EPhongBanMa, EPhongBanMaLabel } from '@/utils/enums';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, Popconfirm, Tooltip } from 'antd';
 import moment from 'moment';
@@ -15,7 +16,7 @@ const PhongBanPage = () => {
       dataIndex: 'ma',
       width: 80,
       filterType: 'select',
-      filterData: ['PB01', 'PB02', 'PB03'],
+      filterData: enumToFilterData(EPhongBanMa, EPhongBanMaLabel),
       sortable: true,
     },
     {

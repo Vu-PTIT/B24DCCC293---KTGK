@@ -1,15 +1,11 @@
+import { enumToFilterData, ETrangThaiNhanVien, ETrangThaiNhanVienLabel } from '@/utils/enums';
 import rules from '@/utils/rules';
 import { resetFieldsForm } from '@/utils/utils';
 import { Button, Card, Form, Input, InputNumber, Select } from 'antd';
 import { useEffect } from 'react';
 import { useModel } from 'umi';
 
-const TRANG_THAI_OPTIONS = [
-  { value: 'thu-viec', label: 'Thử việc' },
-  { value: 'da-ky', label: 'Đã ký' },
-  { value: 'nghi-phep', label: 'Nghỉ phép' },
-  { value: 'da-thoi-viec', label: 'Đã thôi việc' },
-];
+const TRANG_THAI_OPTIONS = enumToFilterData(ETrangThaiNhanVien, ETrangThaiNhanVienLabel);
 
 const FormNhanVien = (props: any) => {
   const [form] = Form.useForm();

@@ -1,17 +1,15 @@
 import TableBase from '@/components/Table';
 import { type IColumn } from '@/components/Table/typing';
+import {
+  enumToFilterData,
+  ETrangThaiNhanVien,
+  ETrangThaiNhanVienLabel,
+} from '@/utils/enums';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, message, Popconfirm, Tooltip } from 'antd';
 import moment from 'moment';
 import { useModel } from 'umi';
 import Form from './components/Form';
-
-const TRANG_THAI_MAP = {
-  'thu-viec': 'Thử việc',
-  'da-ky': 'Đã ký',
-  'nghi-phep': 'Nghỉ phép',
-  'da-thoi-viec': 'Đã thôi việc',
-};
 
 const NhanVienPage = () => {
   const { getModel, page, limit, deleteModel, handleEdit } = useModel('nhanvien');
@@ -23,8 +21,8 @@ const NhanVienPage = () => {
   const getPhongBanName = (ma: string) => phongBanList?.find((pb: any) => pb.ma === ma)?.ten || ma;
 
   const handleDeleteWithValidation = (record: NhanVien.IRecord) => {
-    if (record.trangThai !== 'thu-viec') {
-      message.error('Chỉ có thể xóa nhân viên có trạng thái "Thử việc"');
+    if (record.trangThai !== ETrangThaiNhanVien.THU_VIEC) {
+      message.error(`Chỉ có thể xóa nhân viên có trạng thái "${ETrangThaiNhanVienLabel[ETrangThaiNhanVien.THU_VIEC]}"`);
       return;
     }
     deleteModel(record._id, getModel);
@@ -50,7 +48,7 @@ const NhanVienPage = () => {
       dataIndex: 'chucVu',
       width: 150,
       filterType: 'select',
-      filterData: chucVuList?.map((cv: any) => cv.ma) || [],
+      filterData: (chucVuList ?? []).map((cv: any) => ({ value: cv.ma, label: cv.ten })),
       sortable: true,
       render: (val) => getChucVuName(val),
     },
@@ -59,7 +57,7 @@ const NhanVienPage = () => {
       dataIndex: 'phongBan',
       width: 150,
       filterType: 'select',
-      filterData: phongBanList?.map((pb: any) => pb.ma) || [],
+      filterData: (phongBanList ?? []).map((pb: any) => ({ value: pb.ma, label: pb.ten })),
       sortable: true,
       render: (val) => getPhongBanName(val),
     },
@@ -76,9 +74,9 @@ const NhanVienPage = () => {
       dataIndex: 'trangThai',
       width: 120,
       filterType: 'select',
-      filterData: ['thu-viec', 'da-ky', 'nghi-phep', 'da-thoi-viec'],
+      filterData: enumToFilterData(ETrangThaiNhanVien, ETrangThaiNhanVienLabel),
       sortable: true,
-      render: (val) => TRANG_THAI_MAP[val as keyof typeof TRANG_THAI_MAP] || val,
+      render: (val: ETrangThaiNhanVien) => ETrangThaiNhanVienLabel[val] ?? val,
     },
     {
       title: 'Ngày tạo',

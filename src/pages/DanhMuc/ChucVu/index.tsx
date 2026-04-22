@@ -1,5 +1,6 @@
 import TableBase from '@/components/Table';
 import { type IColumn } from '@/components/Table/typing';
+import { EChucVuMa, EChucVuMaLabel, enumToFilterData } from '@/utils/enums';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, Popconfirm, Tooltip } from 'antd';
 import moment from 'moment';
@@ -15,7 +16,7 @@ const ChucVuPage = () => {
       dataIndex: 'ma',
       width: 80,
       filterType: 'select',
-      filterData: ['M01', 'M02', 'M03'],
+      filterData: enumToFilterData(EChucVuMa, EChucVuMaLabel),
       sortable: true,
     },
     {
