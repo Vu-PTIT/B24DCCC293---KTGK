@@ -5,7 +5,10 @@ export default {
   'menu.Dashboard': 'Trang chủ',
   'menu.News': 'Tin tức',
 
+  'menu.NhanVien': 'Nhân viên',
+
   'menu.DanhMuc': 'Danh mục',
   'menu.DanhMuc.ChucVu': 'Chức vụ',
+  'menu.DanhMuc.PhongBan': 'Phòng ban',
   'menu.DanhMuc.LoaiPhongBan': 'Loại phòng ban',
 };

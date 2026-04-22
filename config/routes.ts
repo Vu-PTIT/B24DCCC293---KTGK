@@ -36,20 +36,31 @@
 		component: './RandomUser',
 		icon: 'ArrowsAltOutlined',
 	},
+	{
+		path: '/nhan-vien',
+		name: 'NhanVien',
+		component: './NhanVien',
+		icon: 'TeamOutlined',
+	},
 
 	// DANH MUC HE THONG
-	// {
-	// 	name: 'DanhMuc',
-	// 	path: '/danh-muc',
-	// 	icon: 'copy',
-	// 	routes: [
-	// 		{
-	// 			name: 'ChucVu',
-	// 			path: 'chuc-vu',
-	// 			component: './DanhMuc/ChucVu',
-	// 		},
-	// 	],
-	// },
+	{
+		name: 'DanhMuc',
+		path: '/danh-muc',
+		icon: 'copy',
+		routes: [
+			{
+				name: 'ChucVu',
+				path: 'chuc-vu',
+				component: './DanhMuc/ChucVu',
+			},
+			{
+				name: 'PhongBan',
+				path: 'phong-ban',
+				component: './DanhMuc/PhongBan',
+			},
+		],
+	},
 
 	{
 		path: '/notification',
