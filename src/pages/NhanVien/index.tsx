@@ -14,7 +14,7 @@ const TRANG_THAI_MAP = {
 };
 
 const NhanVienPage = () => {
-  const { getModel, page, limit, deleteModel, handleEdit, danhSach } = useModel('nhanvien');
+  const { getModel, page, limit, deleteModel, handleEdit } = useModel('nhanvien');
   const { danhSach: chucVuList } = useModel('danhmuc.chucvu');
   const { danhSach: phongBanList } = useModel('danhmuc.phongban');
 
@@ -102,8 +102,7 @@ const NhanVienPage = () => {
           <Tooltip title="Xóa">
             <Popconfirm
               onConfirm={() => handleDeleteWithValidation(record)}
-              title="Xác nhận xóa"
-              description="Bạn có chắc chắn muốn xóa nhân viên này? (Chỉ có thể xóa nhân viên thử việc)"
+              title="Bạn có chắc chắn muốn xóa nhân viên này? (Chỉ có thể xóa nhân viên thử việc)"
               placement="topLeft"
             >
               <Button danger type="link" icon={<DeleteOutlined />} />
